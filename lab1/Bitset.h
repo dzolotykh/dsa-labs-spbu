@@ -26,7 +26,7 @@ public:
         template<typename T>
         reference& operator=(T value) {
             uint64_t _value = static_cast<bool>(value);
-            uint64_t mask = ~(1 << bit_number);
+            uint64_t mask = ~(uint64_t(1) << bit_number);
             segment &= mask;
             segment |= (_value << bit_number);
 
@@ -42,7 +42,7 @@ public:
     };
 
     bool operator[](size_t index) const {
-        return bits[index / 64] & (1 << (index % 64));
+        return bits[index / 64] & (uint64_t(1) << (index % 64));
     }
 
     reference operator[](size_t index) {
@@ -61,7 +61,7 @@ public:
 
             bits[i] += other.bits[i] + carry;
             carry = bits[i] >> 63;
-            bits[i] &= ((uint64_t)1 << 63) - 1;
+            bits[i] &= (uint64_t(1) << 63) - 1;
         }
         return *this;
     }
