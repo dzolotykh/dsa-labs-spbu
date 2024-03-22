@@ -1,15 +1,6 @@
 #include <iostream>
-#include "Bitset.h"
 
 using namespace std;
-
-void test1() {
-    Bitset<128> bits1;
-    bits1[1] = 1;
-
-    cout << bits1 << endl;
-
-}
 
 void print(int a) {
     int cnt = 32;
@@ -20,6 +11,4 @@ void print(int a) {
 }
 
 int main() {
-    test1();
-
 }
